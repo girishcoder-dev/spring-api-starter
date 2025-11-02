@@ -22,7 +22,6 @@ public class ProductController {
     public List<ProductDto> getAllProducts(
             @RequestParam(name = "categoryId", required = false) Byte categoryId
     ) {
-
         List<Product> products;
         if (categoryId != null) {
             products = productRepository.findByCategoryId(categoryId);

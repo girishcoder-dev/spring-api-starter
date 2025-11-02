@@ -45,5 +45,10 @@ public class UserController {
         return ResponseEntity.ok(userMapper.toDto(user));
     }
 
+    @PostMapping
+    public UserDto createUser(@RequestBody UserDto data) {
+        return data;
+    }
+
 
 }
