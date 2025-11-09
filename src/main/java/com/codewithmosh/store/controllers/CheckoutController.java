@@ -5,7 +5,7 @@ import com.codewithmosh.store.dtos.CheckoutResponse;
 import com.codewithmosh.store.entities.Order;
 import com.codewithmosh.store.entities.OrderItem;
 import com.codewithmosh.store.entities.OrderStatus;
-import com.codewithmosh.store.entities.User;
+import com.codewithmosh.store.dtos.ErrorDto;
 import com.codewithmosh.store.repositories.CartRepository;
 import com.codewithmosh.store.repositories.OrderRepository;
 import com.codewithmosh.store.services.AuthService;
@@ -37,13 +37,13 @@ public class CheckoutController {
         var cart = cartRepository.getCartWithItems(request.getCartId()).orElse(null);
         if (cart == null) {
             return ResponseEntity.badRequest().body(
-                    Map.of("error", "cart not found")
+                    new ErrorDto("Cart not found")
             );
         }
 
         if(cart.getItems().isEmpty()) {
             return ResponseEntity.badRequest().body(
-                    Map.of("error", "Cart is empty")
+                    new ErrorDto("Cart is empty")
             );
         }
 
