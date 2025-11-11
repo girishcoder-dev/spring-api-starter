@@ -6,8 +6,10 @@ import lombok.Data;
 public class CheckoutResponse {
 
     private Long orderId;
+    private String checkoutUrl;
 
-    public CheckoutResponse(Long id) {
+    public CheckoutResponse(Long id, String url) {
         this.orderId = id;
+        this.checkoutUrl = url;
     }
 }
